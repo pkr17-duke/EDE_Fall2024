@@ -137,7 +137,8 @@ the data includes characters like "~", "<", "/".
 ```{r}
 
 ggplot(neonics) +
-  geom_freqpoly(aes(x = Publication.Year), binwidth = 1) +  labs(title = "Number of studies conducted between 1980-2020", 
+  geom_freqpoly(aes(x = Publication.Year), binwidth = 1) +
+  labs(title = "Number of studies conducted between 1980-2020", 
                      x = "Publication Year", y = "Number of studies")
 
 ```
@@ -148,7 +149,8 @@ ggplot(neonics) +
 
 ggplot(neonics) + 
   geom_freqpoly(aes(x = Publication.Year, color = Test.Location)
-                , binwidth = 1) +  labs(title = "Number of studies conducted between 1980-2020", 
+                , binwidth = 1) + 
+  labs(title = "Number of studies conducted between 1980-2020", 
                      x = "Publication Year", y = "Number of studies")
 
 ```
@@ -203,7 +205,8 @@ unique(litter_new_date)
 summary(litter$plotID)
 ```
 
-> Answer: 'summary' shows us a count of rows per plot ID whereas 'unique' lists only the unique values within the column.
+> Answer: 'summary' shows us a count of rows per plot ID
+whereas 'unique' lists only the unique values within the column.
 
 14. Create a bar graph of functionalGroup counts. This shows you what type of litter is collected at the Niwot Ridge sites. Notice that litter types are fairly equally distributed across the Niwot Ridge sites.
 
@@ -211,7 +214,8 @@ summary(litter$plotID)
 
 ggplot(data = litter, aes(x = litter$functionalGroup)) +
   geom_bar() + 
-labs(title = "Litter by Functional Group", x = "Functional groups", y = "Count observed")
+labs(title = "Litter by Functional Group",
+     x = "Functional groups", y = "Count observed")
 
 ```
 
@@ -220,17 +224,23 @@ labs(title = "Litter by Functional Group", x = "Functional groups", y = "Count o
 ```{r}
 
 ggplot(litter) +
-  geom_boxplot(aes(x = functionalGroup, y = dryMass)) + labs(title = "Weight of Litter by Functional Group", x = "Functional groups", y = "Dry Mass")
+  geom_boxplot(aes(x = functionalGroup, y = dryMass)) +
+  labs(title = "Weight of Litter by Functional Group",
+       x = "Functional groups", y = "Dry Mass")
 
 ggplot(litter) +
-  geom_violin(aes(x = functionalGroup, y = dryMass)) + labs(title = "Weight of Litter by Functional Group", x = "Functional groups", y = "Dry Mass")
+  geom_violin(aes(x = functionalGroup, y = dryMass)) +
+  labs(title = "Weight of Litter by Functional Group",
+       x = "Functional groups", y = "Dry Mass")
 
 
 ```
 
 Why is the boxplot a more effective visualization option than the violin plot in this case?
 
-> Answer: We have very few datapoints per functional group in this data set (20-30 per group). There is also very little range within the functional groups, as the box plot shows.
+> Answer: We have very few datapoints per functional group in this data
+set (20-30 per group). There is also very little range within the functional
+groups, as the box plot shows.
 
 What type(s) of litter tend to have the highest biomass at these sites?
 ```{r}
