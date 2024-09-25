@@ -34,10 +34,12 @@ This exercise accompanies the lessons in Environmental Data Analytics on Data Ex
 
 ```{r,  message = FALSE}
 
-#library(tidyverse) ##loading packages
-#library(lubridate)
-#library(here)
-#library(dplyr)
+library(tidyverse) ##loading packages
+library(lubridate)
+install.packages("here")
+library(here)
+library(dplyr)
+library(pivottabler)
 
 getwd() ## checking working directory
 
@@ -84,6 +86,7 @@ the health of these forest ecosystems.
 ```{r}
 
 dim(neonics)
+# Rows = 4623, Columns = 30
 
 ```
 
@@ -119,8 +122,7 @@ impacts insect populations.
 
 ```{r}
 
-#View(neonics)
-neonics$Conc.1..Author.
+#View(neonics$Conc.1..Author.)
 class(neonics$Conc.1..Author.)
 
 ```
@@ -146,7 +148,8 @@ ggplot(neonics) +
 ```{r}
 
 ggplot(neonics) +
-  geom_freqpoly(aes(x = Publication.Year, color = Test.Location), binwidth = 1) +  
+  geom_freqpoly(aes(x = Publication.Year, color = Test.Location), binwidth = 1)
++  
   labs(title = "Number of studies conducted between 1980-2020", 
                      x = "Publication Year", y = "Number of studies")
 
@@ -187,7 +190,9 @@ class(litter$collectDate)
 litter_new_date <- as.Date(litter$collectDate)
 class(litter_new_date) #new values are dates
 
-unique(litter_new_date) #Data was collected on two days in August - 2nd and 30th.
+unique(litter_new_date)
+
+#Data was collected on two days in August - 2nd and 30th.
 
 ```
 
@@ -230,11 +235,12 @@ Why is the boxplot a more effective visualization option than the violin plot in
 
 What type(s) of litter tend to have the highest biomass at these sites?
 ```{r}
-litter %>%
-+     group_by(functionalGroup) %>%
-+     summarize(dryMass = n())
+pivot_table <- aggregate(dryMass ~ functionalGroup, data = litter, 
+    FUN = function(x) c(TotalDryMass = sum(x, na.rm = TRUE)
+                        , Count = length(x)))
 
-#Double checking with a pivot table to see the data
+pivot_table
+
 ```
 
 > Answer: Needles tend to have the highest biomasss at these sites.
