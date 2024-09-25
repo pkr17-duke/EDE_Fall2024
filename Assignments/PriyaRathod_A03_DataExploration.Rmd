@@ -137,8 +137,7 @@ the data includes characters like "~", "<", "/".
 ```{r}
 
 ggplot(neonics) +
-  geom_freqpoly(aes(x = Publication.Year), binwidth = 1) +  
-  labs(title = "Number of studies conducted between 1980-2020", 
+  geom_freqpoly(aes(x = Publication.Year), binwidth = 1) +  labs(title = "Number of studies conducted between 1980-2020", 
                      x = "Publication Year", y = "Number of studies")
 
 ```
@@ -147,10 +146,9 @@ ggplot(neonics) +
 
 ```{r}
 
-ggplot(neonics) +
-  geom_freqpoly(aes(x = Publication.Year, color = Test.Location), binwidth = 1)
-+  
-  labs(title = "Number of studies conducted between 1980-2020", 
+ggplot(neonics) + 
+  geom_freqpoly(aes(x = Publication.Year, color = Test.Location)
+                , binwidth = 1) +  labs(title = "Number of studies conducted between 1980-2020", 
                      x = "Publication Year", y = "Number of studies")
 
 ```
@@ -212,7 +210,8 @@ summary(litter$plotID)
 ```{r}
 
 ggplot(data = litter, aes(x = litter$functionalGroup)) +
-  geom_bar() + labs(title = "Litter by Functional Group", x = "Functional groups", y = "Count observed")
+  geom_bar() + 
+labs(title = "Litter by Functional Group", x = "Functional groups", y = "Count observed")
 
 ```
 
