@@ -31,9 +31,9 @@ This exercise accompanies the lessons in Environmental Data Analytics on Data Wr
 
 ```{r setup, message = FALSE}
 #1a 
-#library(tidyverse)
-#library(here)
-#library (lubridate)
+library(tidyverse)
+library(here)
+library (lubridate)
 
 #1b 
 getwd()
@@ -111,16 +111,20 @@ class(epa_air_pm25_19$Date)
 #4
 
  epa_air_o3_18_processed <- 
-   select(epa_air_o3_18, Date, DAILY_AQI_VALUE, Site.Name, AQS_PARAMETER_DESC, COUNTY, SITE_LATITUDE, SITE_LONGITUDE)
+   select(epa_air_o3_18, Date, DAILY_AQI_VALUE, Site.Name,
+          AQS_PARAMETER_DESC, COUNTY, SITE_LATITUDE, SITE_LONGITUDE)
  
   epa_air_o3_19_processed <- 
-   select(epa_air_o3_19, Date, DAILY_AQI_VALUE, Site.Name, AQS_PARAMETER_DESC, COUNTY, SITE_LATITUDE, SITE_LONGITUDE)
+   select(epa_air_o3_19, Date, DAILY_AQI_VALUE, Site.Name,
+          AQS_PARAMETER_DESC, COUNTY, SITE_LATITUDE, SITE_LONGITUDE)
   
   epa_air_pm25_18_processed <- 
-   select(epa_air_pm25_18, Date, DAILY_AQI_VALUE, Site.Name, AQS_PARAMETER_DESC, COUNTY, SITE_LATITUDE, SITE_LONGITUDE)
+   select(epa_air_pm25_18, Date, DAILY_AQI_VALUE, Site.Name,
+          AQS_PARAMETER_DESC, COUNTY, SITE_LATITUDE, SITE_LONGITUDE)
   
   epa_air_pm25_19_processed <- 
-   select(epa_air_pm25_19, Date, DAILY_AQI_VALUE, Site.Name, AQS_PARAMETER_DESC, COUNTY, SITE_LATITUDE, SITE_LONGITUDE)
+   select(epa_air_pm25_19, Date, DAILY_AQI_VALUE, Site.Name,
+          AQS_PARAMETER_DESC, COUNTY, SITE_LATITUDE, SITE_LONGITUDE)
 
 
 #5
