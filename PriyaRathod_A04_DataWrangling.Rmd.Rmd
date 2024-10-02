@@ -190,7 +190,8 @@ ifelse(colnames(epa_air_pm25_18_processed)==colnames(epa_air_o3_18_processed),
 ifelse(colnames(epa_air_pm25_18_processed)==colnames(epa_air_o3_18_processed),
        "Same", "Different")
 
-epa_air_combined <- rbind(epa_air_o3_18_processed, epa_air_o3_19_processed, epa_air_pm25_18_processed, epa_air_pm25_19_processed)
+epa_air_combined <- 
+  rbind(epa_air_o3_18_processed, epa_air_o3_19_processed, epa_air_pm25_18_processed, epa_air_pm25_19_processed)
 
 #8 
 
@@ -217,20 +218,25 @@ epa_air_combined_processed <- cbind(epa_air_combined_processed, month, year)
 colnames(epa_air_combined_processed)[8] <- "Month"
 colnames(epa_air_combined_processed)[9] <- "Year"
 
-epa_air_combined_processed <- epa_air_combined_processed %>%
+epa_air_combined_processed <- 
+  epa_air_combined_processed %>%
   select(Date, Month, Year, Site.Name, AQS_PARAMETER_DESC, COUNTY, mean_AQI, mean_latitude, mean_longitude)
 
 
 #9
 
-epa_air_combined_processed <- epa_air_combined_processed %>%
+epa_air_combined_processed <- 
+  epa_air_combined_processed %>%
   mutate(Ozone = ifelse(AQS_PARAMETER_DESC == "Ozone", mean_AQI, NA),
          PM2.5 = ifelse(AQS_PARAMETER_DESC == "PM2.5", mean_AQI, NA))
 
-epa_air_combined_processed <- epa_air_combined_processed %>%
+epa_air_combined_processed <- 
+  epa_air_combined_processed %>%
   select(Date, Month, Year, Site.Name, Ozone, PM2.5, COUNTY, mean_AQI, mean_latitude, mean_longitude, AQS_PARAMETER_DESC)
 
-epa_air_combined_processed = subset(epa_air_combined_processed, select = -c(AQS_PARAMETER_DESC, mean_AQI)) #Removing the AQS and mean_AQI columns
+epa_air_combined_processed = 
+  subset(epa_air_combined_processed, select = -c(AQS_PARAMETER_DESC,
+mean_AQI)) #Removing the AQS and mean_AQI columns
 
 
 #10 
