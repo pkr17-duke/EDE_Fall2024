@@ -167,7 +167,8 @@ legend <- get_legend(plot_temp_clean + theme(legend.position = "right"))
 
 combined_plot <- plot_grid(plot_temp_clean, plot_tp_clean, plot_tn_clean,
      legend, align = 'h', nrow = 1, rel_widths = c(1,1,1,0.5)) +
-draw_label("Temperature, Phosphorus and Nitrogen Levels by Month - Peter and Paul Lakes", x = 0.5, y = 0.98) + draw_label("Month", x = 0.5, y = 0.04) + scale_color_manual(values = c("#2246be", "#1d9a0c"))
+draw_label("Temperature, Phosphorus and Nitrogen Levels by Month - Peter and Paul Lakes", size = 10, x = 0.5, y = 0.98) + draw_label("Month", x = 0.5, y = 0.04) + scale_color_manual(values = c("#2246be", "#1d9a0c")) + 
+ 
 print(combined_plot)
 
 ```
