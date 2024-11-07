@@ -35,13 +35,13 @@ library(ggplot2)
 library(here)
 here()
 
-install.packages("trend")
+#install.packages("trend")
 library(trend)
-install.packages("zoo")
+#install.packages("zoo")
 library(zoo)
-install.packages("Kendall")
+#install.packages("Kendall")
 library(Kendall)
-install.packages("tseries")
+#install.packages("tseries")
 library(tseries)
 
 mytheme <- theme_classic(base_size = 14) +
