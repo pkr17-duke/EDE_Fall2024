@@ -28,21 +28,21 @@ This exercise accompanies the lessons in Environmental Data Analytics on general
 
 ```{r}
 
-library(tidyverse)
-library(dplyr)
-library(lubridate)
-library(ggplot2)
-library(here)
+#library(tidyverse)
+#library(dplyr)
+#library(lubridate)
+#library(ggplot2)
+#library(here)
 here()
 
 #install.packages("trend")
-library(trend)
+#library(trend)
 #install.packages("zoo")
-library(zoo)
+#library(zoo)
 #install.packages("Kendall")
-library(Kendall)
+#library(Kendall)
 #install.packages("tseries")
-library(tseries)
+#library(tseries)
 
 mytheme <- theme_classic(base_size = 14) +
   theme(axis.text = element_text(color = "black"), 
@@ -141,7 +141,8 @@ plot_ozone <- ggplot(GaringerOzone, aes(x = Date, y = Daily.Max.8.hour.Ozone.Con
 x = "Time", y = "Ozone Concentration, PPM") +  scale_x_date(
     date_breaks = "1 year",     
     date_labels = "%Y") +
-  geom_line(color = "black") + mytheme + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(axis.text=element_text(size=8)) + 
+  geom_line(color = "black") + mytheme + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  theme(axis.text=element_text(size=5)) + 
   geom_smooth(method=lm)
 print(plot_ozone)
 
@@ -161,7 +162,8 @@ Study question: Have ozone concentrations changed over the 2010s at this station
 #8
 
 GaringerOzone_processed <- GaringerOzone %>% 
-  mutate(Daily.Max.8.hour.Ozone.Concentration=zoo::na.approx(Daily.Max.8.hour.Ozone.Concentration)) %>%  mutate(DAILY_AQI_VALUE=zoo::na.approx(DAILY_AQI_VALUE))
+  mutate(Daily.Max.8.hour.Ozone.Concentration=zoo::na.approx(Daily.Max.8.hour.Ozone.Concentration)) %>%  
+  mutate(DAILY_AQI_VALUE=zoo::na.approx(DAILY_AQI_VALUE))
 
 ```
 
@@ -242,7 +244,7 @@ ggplot(GaringerOzone.monthly, aes(x = Month, y = Ozone_Mean)) +
   geom_line() +
   ylab("Mean Ozone Concentration, PPM") +
   geom_smooth( method = lm ) + ylim(0,0.075) + scale_x_discrete(limits = as.character(1:12), labels =  c(month)) + mytheme + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(axis.text=element_text(size=8)) + 
-  labs(title = "Monthly Mean Ozone Concentration at Garinger High School in North Carolina (2010-2019)") + theme(plot.title = element_text(size = 12))
+  labs(title = "Monthly Mean Ozone Concentration at Garinger High School in North Carolina (2010-2019)") + theme(plot.title = element_text(size = 10))
 print(plot_ozone_monthly)
 
 ```
